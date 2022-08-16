@@ -6,7 +6,7 @@
 body {
 	height: 100vh;
 	margin: 0;
-	padding: 12px;
+	padding: 12px 12px 0 12px;
 }
 
 .translator__textarea {
@@ -110,9 +110,10 @@ body {
 
 footer {
 	margin-top: 25px;
+	margin-bottom: 12px;
 	position: sticky;
     top: 100%;
-	font-size: 15px;
+	font-size: 13px;
 	text-align: center;
 }
 
@@ -121,5 +122,26 @@ footer {
 @media (max-height: 322px) {
 	body {
 		height: 322px;
+	}
+}
+
+@media (max-width: 450px) {
+	.translator__textarea {
+		flex-direction: column;
+		margin-top: 10vh;
+	}
+
+	.translator__textarea .box-one,
+	.translator__textarea .box-two {
+		width: 100%;
+	}
+
+	.translator__textarea .swap {
+		top: 9.2vh;
+		right: 3px;
+	}
+
+	.translator__textarea .arrow-right {
+		display: none;
 	}
 }

@@ -59,7 +59,6 @@ function swap() {
 
 		} else {
 			html.textArea.left.value = rightValue;
-			html.textArea.right.value = leftValue;
 		};
 
 		swapped = true;
@@ -73,7 +72,6 @@ function swap() {
 
 		} else {
 			html.textArea.left.value = rightValue;
-			html.textArea.right.value = leftValue;
 		};
 
 		swapped = false;
@@ -83,7 +81,7 @@ function swap() {
 		html.languageIndicator.left.innerText = "English";
 		html.languageIndicator.right.innerText = "Indonesia";
 	};
-
+	
 	translate();
 	counter();
 };
