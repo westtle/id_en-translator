@@ -1,0 +1,125 @@
+* {
+	color: rgba(0, 0, 0, 0.85);
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	margin: 0;
+	padding: 12px;
+}
+
+.translator__textarea {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 14vh;
+}
+
+.translator__textarea .box-one,
+.translator__textarea .box-two {
+	display: flex;
+	flex-direction: column;
+	width: 380px;
+}
+
+.translator__textarea .box_tool {
+	display: flex;
+	position: relative;
+}
+
+.translator__textarea .box_tool div {
+	border: 1px solid rgb(118, 118, 118);
+	border-left: none;
+}
+
+.translator__textarea .box_tool img {
+	padding: 4px;
+	opacity: 0.7;
+}
+
+.translator__textarea .box_tool img:hover {
+	opacity: 0.9;
+}
+
+.translator__textarea textarea {
+	border-right: none;
+	border-radius: 2px 0 0 2px;
+	height: 200px;
+	width: 100%;
+	padding: 6px 8px;
+	font-size: 14px;
+	resize: none;
+}
+
+.translator__textarea .box-one textarea:focus {
+	border-right: 1px solid rgb(118, 118, 118);
+	outline: none;
+}
+
+.translator__textarea .box-two textarea:focus,
+.translator__textarea .box-two textarea:hover {
+	border: 1px solid rgb(118, 118, 118);
+	border-right: none;
+	border-radius: 2px 0 0 2px;
+	outline: none;
+	cursor: default;
+}
+
+.translator__textarea .box-one span,
+.translator__textarea .box-two span {
+	margin-bottom: 3px;
+	text-align: center;
+}
+
+.translator__textarea .arrow-right {
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+}
+
+ .translator__textarea .swap {
+ 	position: absolute;
+	top: 12.8vh;
+	padding: 15px;
+	opacity: 0.7;
+
+	user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.translator__textarea .swap:hover {
+	opacity: 0.9;
+}
+
+.translator__textarea .counter {
+	border: none !important;
+	margin: 1px 1px;
+	font-size: 11px;
+	text-align: right;
+	position: absolute;
+	right: 0;
+	bottom: -15px;
+}
+
+/* Footer */
+
+footer {
+	margin-top: 25px;
+	position: sticky;
+    top: 100%;
+	font-size: 15px;
+	text-align: center;
+}
+
+/* Media Query */
+
+@media (max-height: 322px) {
+	body {
+		height: 322px;
+	}
+}
