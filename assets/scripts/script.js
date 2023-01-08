@@ -1,133 +1,119 @@
-const html = {
-	textArea: {
-		left: document.querySelector(".box-one textarea"),
-		right: document.querySelector(".box-two textarea")
-	},
-	languageIndicator: {
-		left: document.querySelector(".box-one_language-name"),
-		right: document.querySelector(".box-two_language-name")
-	},
-	swapButton: document.querySelector(".swap"),
-	toolIcon: {
-		left: document.querySelector(".tool-left"),
-		right: document.querySelector(".tool-right")
-	},
-	counter: document.querySelector(".counter")
-};
+// HTML.
+const textAreaLeft = document.querySelector("._left textarea");
+const textAreaRight = document.querySelector("._right textarea");
 
-let translateFrom = html.languageIndicator.left.dataset.language;
-let translateTo = html.languageIndicator.right.dataset.language;
+const languageTitle = document.querySelectorAll(".language_");
 
-html.textArea.left.addEventListener("change", translate);
-html.textArea.left.addEventListener("input", counter);
+const actionButton = document.querySelectorAll(".action-button__");
+const swapButton = document.querySelector("._swap div");
 
-html.swapButton.addEventListener("click", swap);
-html.swapButton.addEventListener("contextmenu", e => e.preventDefault());
-
-html.toolIcon.left.addEventListener("click", pasteOrRemove);
-html.toolIcon.right.addEventListener("click", copy);
-
-function translate() {
-	let textToTranslate = html.textArea.left.value;
-
-	let apiUrl = `https://api.mymemory.translated.net/get?q=${textToTranslate}&langpair=${translateFrom}|${translateTo}`;
-
-	fetch(apiUrl)
-		.then(res => res.json())
-		.then(data => {
-			if (html.textArea.left.value == "") {
-				html.textArea.right.value = "";
-			} else {
-				html.textArea.right.value = data.responseData.translatedText;
-			};
-		})
-		.catch(err => {
-			html.textArea.right.value = "Connection error / Failed to fetch";
-	});
-};
-
-// More Functions.
+const lengthCounter = document.querySelector(".length-counter_");
 
 let swapped = false;
+let translateFrom = languageTitle[0].dataset.language;
+let translateTo = languageTitle[1].dataset.language;
+
+function translate() {
+	const textToTranslate = textAreaLeft.value;
+
+	if (textAreaLeft.value == "") {
+		textAreaRight.value = "";
+		return;
+	};
+
+	const url = `https://api.mymemory.translated.net/get?q=${textToTranslate}&langpair=${translateFrom}|${translateTo}`;
+
+	fetch(url)
+		.then(res => res.json())
+		.then(data => {
+			textAreaRight.value = data.responseData.translatedText;
+		})
+		.catch(err => textAreaRight.value = err);
+};
 
 function swap() {
-	let leftValue = html.textArea.left.value;
-	let rightValue = html.textArea.right.value;
 
-	if (swapped === false) {
-		if (html.textArea.right.value == "") {
+	// Reference.
+	let leftValue = textAreaLeft.value;
+	let rightValue = textAreaRight.value;
 
-		} else {
-			html.textArea.left.value = rightValue;
-		};
+	// Swap Stuff.
+	if (!swapped) {
+		textAreaLeft.value = rightValue;
+
+		translateFrom = languageTitle[0].dataset.language = "id";
+		translateTo = languageTitle[1].dataset.language = "en";
+
+		languageTitle[0].innerText = "Indonesian";
+		languageTitle[1].innerText = "English";
 
 		swapped = true;
-		translateFrom = html.languageIndicator.left.dataset.language = "id";
-		translateTo = html.languageIndicator.right.dataset.language = "en";
-
-		html.languageIndicator.left.innerText = "Indonesia";
-		html.languageIndicator.right.innerText = "English";
 	} else {
-		if (html.textArea.right.value == "") {
+		textAreaLeft.value = rightValue;
 
-		} else {
-			html.textArea.left.value = rightValue;
-		};
+		translateFrom = languageTitle[0].dataset.language = "en";
+		translateTo = languageTitle[1].dataset.language = "id";
+
+		languageTitle[0].innerText = "English";
+		languageTitle[1].innerText = "Indonesian";
 
 		swapped = false;
-		translateFrom = html.languageIndicator.left.dataset.language = "en";
-		translateTo = html.languageIndicator.right.dataset.language = "id";
-
-		html.languageIndicator.left.innerText = "English";
-		html.languageIndicator.right.innerText = "Indonesia";
 	};
-	
+
 	translate();
 	counter();
 };
 
-function pasteOrRemove() {
-	if (html.toolIcon.left.attributes[1].value == "assets/Images/clipboard.svg") {
+function changeIcon() {
+	if (textAreaLeft.value.length > 0) {
+		actionButton[0].querySelector("img").src = "assets/Images/x.svg";
+	} else {
+		actionButton[0].querySelector("img").src = "assets/Images/clipboard.svg"
+	};
+
+	counter();
+};
+
+function pasteDelete() {
+	let currentIcon = actionButton[0].querySelector("img").attributes.src.value;
+
+	if (currentIcon == "assets/Images/clipboard.svg") {
+
 		// Paste.
 		navigator.clipboard.readText()
-			.then(clipText => html.textArea.left.value = clipText)
+			.then(clipText => textAreaLeft.value = clipText)
+			.then(changeIcon)
 			.then(translate)
-			.then(counter);
 	} else {
-		// Remove.
-		html.textArea.left.value = "";
+		
+		// Delete All.
+		textAreaLeft.value = "";
+		changeIcon();
 		translate();
-		counter()
 	};
+
+	counter();
 };
 
 function copy() {
-	html.textArea.right.select();
-  	html.textArea.right.setSelectionRange(0, 99999);
-
- 	navigator.clipboard.writeText(html.textArea.right.value);
+	textAreaRight.select();
+    textAreaRight.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(textAreaRight.value);
 };
 
 function counter() {
-	const target = html.textArea.left;
+	lengthCounter.innerText = `${textAreaLeft.value.length} / ${textAreaLeft.getAttribute("maxlength")}`;
 
-    const maxLength = target.getAttribute("maxlength");
-    const currentLength = target.value.length;
-
-    html.counter.innerText = `${currentLength} / ${maxLength}`;
-
-    if (currentLength > 480) {
-    	html.counter.style.color = "rgb(210, 66, 66";
-    } else {
-    	html.counter.style.color = "rgba(0, 0, 0, 0.85)";
-    };
-
-    // Change Tool Icon.
-	if (html.textArea.left.value.length > 0) {
-		html.toolIcon.left.src = "assets/Images/x.svg";
-		html.toolIcon.left.title = "Delete All"
+	// Change Color Based on Length.
+	if (textAreaLeft.value.length > 480) {
+		lengthCounter.style.color = "#FD5E5E";
 	} else {
-		html.toolIcon.left.src = "assets/Images/clipboard.svg";
-		html.toolIcon.left.title = "Paste"
+		lengthCounter.style.color = "var(--color-main)";
 	};
 };
+
+textAreaLeft.addEventListener("change", translate);
+textAreaLeft.addEventListener("input", changeIcon);
+actionButton[0].addEventListener("click", pasteDelete);
+actionButton[1].addEventListener("click", copy);
+swapButton.addEventListener("click", swap);
