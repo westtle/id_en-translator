@@ -42,7 +42,7 @@ main {
 }
 
 .tool_ {
-	height: calc(100% - 2.125rem);
+	height: calc(100% - 2.063rem);
 }
 /* ------------------- */
 
@@ -84,8 +84,12 @@ main {
 	position: relative;
 }
 
+._left textarea:focus {
+	border-right: var(--border-shorthand);
+}
+
 .length-counter_ {
-	margin: 0.313rem 0 0 0;
+	margin: 0.188rem 0 0 0;
 	font-size: var(--font-size-second);
 
 	position: absolute;
@@ -176,6 +180,10 @@ main {
 	._right {
 		width: 100%;
 		max-width: 25rem;
+	}
+
+	.tool_ {
+		height: calc(100% - 2rem);
 	}
 
 	.__notice {
