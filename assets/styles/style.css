@@ -34,8 +34,8 @@ main {
 }
 
 /* I need to do this or else the layout won't work */
-#translator,
-.__textarea,
+#id_en-translator,
+.__translator,
 ._left,
 ._right {
 	height: 100%;
@@ -48,7 +48,7 @@ main {
 
 /* Left & Right Boxes */
 
-.__textarea {
+.__translator {
 	display: flex;
 	flex-direction: column;
 }
@@ -147,7 +147,7 @@ main {
 /* -------- */
 
 @media (min-width: 31.25rem) { /* 500px */
-	.__textarea {
+	.__translator {
 		justify-content: center;
 		flex-direction: row;
 	}
