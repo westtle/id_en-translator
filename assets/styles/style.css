@@ -1,147 +1,163 @@
-* {
-	color: rgba(0, 0, 0, 0.85);
+:root {
+	--font-size-main: 0.906rem; /* 14.5px */
+	--font-size-second: 0.688rem; /* 11px */
+
+	--color-main: rgba(0, 0, 0, 0.8);
+	--border-main: rgba(0, 0, 0, 0.6);
+	--border-shorthand: 0.063rem solid rgba(0, 0, 0, 0.6);
+
+	/* Button */
+	--button-hover-backround: rgba(0, 0, 0, 0.8);
+	--button-hover-color: rgba(255, 255, 255, 0.9);
+	--font-size-button: 0.769rem; /* 12.3px */
+
+	--unit-one: 0.438rem; /* 7px */
+	--unit-two: 0.75rem; /* 12px */
+}
+
+*, *::before, *::after {
+	color: var(--color-main);
 	box-sizing: border-box;
 }
 
-body {
+body { /* Left & right spacing is left & right from default body margin + 12px */
 	height: 100vh;
-	margin: 0;
-	padding: 12px 12px 0 12px;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: var(--unit-two);
+	font-size: var(--font-size-main);
 }
 
-.translator__textarea {
-	display: flex;
-	justify-content: center;
-	gap: 12px;
-	margin-top: 14vh;
+main {
+	height: calc(100% - 9vh);
+	margin: 4.5vh auto;
 }
 
-.translator__textarea .box-one,
-.translator__textarea .box-two {
+/* I need to do this or else the layout won't work */
+#translator,
+.__textarea,
+._left,
+._right {
+	height: 100%;
+}
+
+.tool_ {
+	height: calc(100% - 32px);
+}
+/* ------------------- */
+
+/* Left & Right Boxes */
+
+.__textarea {
 	display: flex;
 	flex-direction: column;
-	width: 380px;
 }
 
-.translator__textarea .box_tool {
-	display: flex;
-	position: relative;
-}
-
-.translator__textarea .box_tool div {
-	border: 1px solid rgb(118, 118, 118);
-	border-left: none;
-}
-
-.translator__textarea .box_tool img {
-	padding: 4px;
-	opacity: 0.7;
-}
-
-.translator__textarea .box_tool img:hover {
-	opacity: 0.9;
-}
-
-.translator__textarea textarea {
-	border-right: none;
-	border-radius: 2px 0 0 2px;
-	height: 200px;
+._left,
+._right {
+	border: var(--border-shorthand);
+	max-height: 200px;
 	width: 100%;
-	padding: 6px 8px;
-	font-size: 14px;
+}
+
+._left textarea,
+._right textarea {
+	border: none;
+	width: 100%;
+	padding: var(--unit-one) var(--unit-two);
+	font-size: var(--font-size-button);
+	text-align: justify;
+	outline: none;
 	resize: none;
 }
 
-.translator__textarea .box-one textarea:focus {
-	border-right: 1px solid rgb(118, 118, 118);
-	outline: none;
-}
-
-.translator__textarea .box-two textarea:focus,
-.translator__textarea .box-two textarea:hover {
-	border: 1px solid rgb(118, 118, 118);
-	border-right: none;
-	border-radius: 2px 0 0 2px;
-	outline: none;
+._right textarea {
 	cursor: default;
 }
 
-.translator__textarea .box-one span,
-.translator__textarea .box-two span {
-	margin-bottom: 3px;
+._left {
+	position: relative;
+}
+
+.length-counter_ {
+	margin: 0.375rem 0;
+	font-size: var(--font-size-second);
+
+	position: absolute;
+	right: 0;
+}
+
+.language_ {
+	border-bottom: var(--border-shorthand);
+	padding: var(--unit-one) var(--unit-two);
 	text-align: center;
 }
 
-.translator__textarea .arrow-right {
+.tool_ {
 	display: flex;
-	align-items: center;
-	font-size: 20px;
 }
 
- .translator__textarea .swap {
- 	position: absolute;
-	top: 12.8vh;
-	padding: 15px;
-	opacity: 0.7;
-
-	user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+.action-button__ {
+	align-self: baseline;
+	padding: var(--unit-one);
+	cursor: pointer;
 }
 
-.translator__textarea .swap:hover {
+.action-button__ img {
+	width: 1.313rem;
 	opacity: 0.9;
 }
 
-.translator__textarea .counter {
-	border: none !important;
-	margin: 1px 1px;
-	font-size: 11px;
-	text-align: right;
-	position: absolute;
-	right: 0;
-	bottom: -15px;
+/* Swap Button in the Middle */
+
+._swap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-height: 200px;
+	padding: var(--unit-one);
+	cursor: pointer;
 }
 
-/* Footer */
-
-footer {
-	margin-top: 25px;
-	margin-bottom: 12px;
-	position: sticky;
-    top: 100%;
-	font-size: 13px;
-	text-align: center;
+._swap img {
+	width: 1.313rem;
+	opacity: 0.9;
 }
 
 /* Media Query */
 
-@media (max-height: 322px) {
-	body {
-		height: 322px;
+@media (hover: hover) {
+	.action-button__,
+	._swap {
+		opacity: 0.6;
+	}
+
+	.action-button__:hover,
+	._swap:hover {
+		opacity: 0.9;
 	}
 }
 
-@media (max-width: 450px) {
-	.translator__textarea {
-		flex-direction: column;
-		margin-top: 10vh;
+/* Font Size */
+@media (max-width: 30rem) { /* 480px */
+	html {
+		font-size: calc(1rem - 10%);
+	}
+}
+/* -------- */
+
+@media (min-width: 31.25rem) { /* 500px */
+	.__textarea {
+		justify-content: center;
+		flex-direction: row;
 	}
 
-	.translator__textarea .box-one,
-	.translator__textarea .box-two {
-		width: 100%;
+	._left,
+	._right {
+		max-width: 400px;
 	}
 
-	.translator__textarea .swap {
-		top: 9.2vh;
-		right: 3px;
-	}
-
-	.translator__textarea .arrow-right {
-		display: none;
+	.length-counter_ {
+		margin: 0.188rem 0;
 	}
 }
