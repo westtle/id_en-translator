@@ -109,6 +109,7 @@ main {
 }
 
 .action-button__ img {
+	display: block;
 	width: 1.313rem;
 	opacity: 0.9;
 }
