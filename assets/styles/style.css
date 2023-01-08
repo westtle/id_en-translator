@@ -120,11 +120,15 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+._swap div {
 	padding: var(--unit-one);
 	cursor: pointer;
 }
 
 ._swap img {
+	display: block;
 	width: 1.313rem;
 	opacity: 0.9;
 }
@@ -143,12 +147,12 @@ main {
 
 @media (hover: hover) {
 	.action-button__,
-	._swap {
+	._swap div {
 		opacity: 0.6;
 	}
 
 	.action-button__:hover,
-	._swap:hover {
+	._swap div:hover {
 		opacity: 0.9;
 	}
 }
