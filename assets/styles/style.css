@@ -112,10 +112,11 @@ main {
 	cursor: pointer;
 }
 
-.action-button__ img {
+.action-button__ img,
+._swap img {
 	display: block;
 	width: 1.313rem;
-	opacity: 0.9;
+	opacity: 0.8;
 }
 
 /* Swap Button in the Middle */
@@ -129,12 +130,6 @@ main {
 ._swap div {
 	padding: var(--unit-one);
 	cursor: pointer;
-}
-
-._swap img {
-	display: block;
-	width: 1.313rem;
-	opacity: 0.9;
 }
 
 /* Notice / Link */
@@ -157,7 +152,7 @@ main {
 
 	.action-button__:hover,
 	._swap div:hover {
-		opacity: 0.9;
+		opacity: 0.8;
 	}
 }
 
