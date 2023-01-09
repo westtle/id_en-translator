@@ -157,7 +157,7 @@ main {
 }
 
 /* Font Size */
-@media (max-width: 30rem) { /* 480px */
+@media (max-width: 31.188rem) { /* 499px */
 	html {
 		font-size: calc(1rem - 10%);
 	}
