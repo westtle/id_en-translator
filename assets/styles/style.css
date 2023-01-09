@@ -107,9 +107,19 @@ main {
 }
 
 .action-button__ {
-	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.action-button__ div {
 	padding: var(--unit-one);
 	cursor: pointer;
+}
+
+.translate___ {
+	display: none;
+	align-self: flex-end;
 }
 
 .action-button__ img,
@@ -145,12 +155,12 @@ main {
 /* Media Query */
 
 @media (hover: hover) {
-	.action-button__,
+	.action-button__ div,
 	._swap div {
 		opacity: 0.6;
 	}
 
-	.action-button__:hover,
+	.action-button__ div:hover,
 	._swap div:hover {
 		opacity: 0.8;
 	}

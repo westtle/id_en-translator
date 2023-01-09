@@ -4,7 +4,7 @@ const textAreaRight = document.querySelector("._right textarea");
 
 const languageTitle = document.querySelectorAll(".language_");
 
-const actionButton = document.querySelectorAll(".action-button__");
+const actionButton = document.querySelectorAll(".action-button__ div");
 const swapButton = document.querySelector("._swap div");
 
 const lengthCounter = document.querySelector(".length-counter_");
@@ -67,8 +67,14 @@ function swap() {
 function changeIcon() {
 	if (textAreaLeft.value.length > 0) {
 		actionButton[0].querySelector("img").src = "assets/Images/x.svg";
+
+		// Show Translate Button.
+		actionButton[1].style.display = "block";
 	} else {
 		actionButton[0].querySelector("img").src = "assets/Images/clipboard.svg"
+
+		// Hide Translate Button.
+		actionButton[1].style.display = "none";
 	};
 
 	counter();
@@ -112,8 +118,8 @@ function counter() {
 	};
 };
 
-textAreaLeft.addEventListener("change", translate);
 textAreaLeft.addEventListener("input", changeIcon);
+actionButton[1].addEventListener("click", translate);
 actionButton[0].addEventListener("click", pasteDelete);
-actionButton[1].addEventListener("click", copy);
+actionButton[2].addEventListener("click", copy);
 swapButton.addEventListener("click", swap);
