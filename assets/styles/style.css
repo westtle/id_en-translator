@@ -145,10 +145,11 @@ main {
 /* Notice / Link */
 
 .__notice {
-	margin-top: var(--unit-two);
+	margin-top: 0.625rem;
 	padding: 0 var(--unit-one);
 	font-size: var(--font-size-second);
 	text-align: center;
+	line-height: 1.1;
 	word-wrap: break-word;
 }
 
@@ -192,6 +193,6 @@ main {
 	}
 
 	.__notice {
-		margin-top: calc(var(--unit-two) + 0.75rem);
+		margin-top: calc(0.625rem + 0.75rem);
 	}
 }
