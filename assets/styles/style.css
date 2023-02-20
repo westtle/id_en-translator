@@ -55,6 +55,7 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	max-height: 26.969rem;
+	min-height: 20rem;
 }
 
 /* Left & Right Boxes */
