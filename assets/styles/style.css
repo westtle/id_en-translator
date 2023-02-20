@@ -92,11 +92,11 @@ main {
 }
 
 .length-counter_ {
-	margin: 0.188rem 0 0 0;
 	font-size: var(--font-size-second);
 
 	position: absolute;
 	right: 0;
+	bottom: -0.938rem;
 }
 
 .language_ {
