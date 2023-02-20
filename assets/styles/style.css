@@ -172,14 +172,14 @@ main {
 }
 
 /* Font Size */
-@media (max-width: 31.188rem) { /* 499px */
+@media (max-width: 29.938rem) { /* 479px */
 	html {
 		font-size: calc(1rem - 10%);
 	}
 }
 /* -------- */
 
-@media (min-width: 31.25rem) { /* 500px */
+@media (min-width: 30rem) { /* 480px */
 	#id_en-translator {
 		flex-direction: row;
 		max-height: 13.25rem;
