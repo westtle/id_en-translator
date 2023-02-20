@@ -44,10 +44,6 @@ main {
 ._right {
 	height: 100%;
 }
-
-.tool_ {
-	height: calc(100% - 2.063rem);
-}
 /* ------------------- */
 
 #id_en-translator {
@@ -67,6 +63,8 @@ main {
 
 ._left,
 ._right {
+	display: flex;
+	flex-direction: column;
 	border: var(--border-shorthand);
 }
 
@@ -109,6 +107,7 @@ main {
 
 .tool_ {
 	display: flex;
+	height: 100%;
 }
 
 .action-button__ {
