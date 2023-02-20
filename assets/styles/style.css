@@ -33,6 +33,7 @@ body { /* Left & right spacing is left & right from default body margin + 12px *
 main {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	width: 100%;
 }
 
@@ -53,6 +54,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	max-height: 26.969rem;
 }
 
 /* Left & Right Boxes */
@@ -60,7 +62,6 @@ main {
 .__translator {
 	display: flex;
 	flex-direction: column;
-	max-height: 26.969rem;
 }
 
 ._left,
