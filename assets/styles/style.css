@@ -192,7 +192,7 @@ main {
 		height: calc(100% - 2rem);
 	}
 
-	.__notice {
-		margin-top: calc(0.625rem + 0.75rem);
+	#notice {
+		margin-top: calc(0.656rem + 0.75rem);
 	}
 }
