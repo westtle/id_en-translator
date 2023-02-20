@@ -125,6 +125,7 @@ main {
 ._swap img {
 	display: block;
 	width: 1.313rem;
+	height: auto;
 	opacity: 0.8;
 }
 
