@@ -39,7 +39,6 @@ main {
 
 /* I need to do this or else the layout won't work */
 #id_en-translator,
-.__translator,
 ._left,
 ._right {
 	height: 100%;
@@ -55,11 +54,6 @@ main {
 }
 
 /* Left & Right Boxes */
-
-.__translator {
-	display: flex;
-	flex-direction: column;
-}
 
 ._left,
 ._right {
